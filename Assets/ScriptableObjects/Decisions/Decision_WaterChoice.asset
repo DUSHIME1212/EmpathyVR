@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5cecb20f2cdcc49bddcd040689f5fa, type: 3}
+  m_Name: Decision_WaterChoice
+  m_EditorClassIdentifier: Assembly-CSharp::EmpathyVR.Data.SO_DecisionData
+  decisionId: dec_water_01
+  promptText: Your water reserves are almost gone. What do you do?
+  timeLimitSeconds: 8
+  options:
+  - optionId: Option_0
+    label: Use water on crops
+    consequencePreview: Your family may go thirsty
+    icon: 
+    outcomeHeadline: The crops survive. Your children drink less today.
+    outcomeDetail: The crops survive. Your children drink less today.
+    consequenceType: 1
+  - optionId: Option_1
+    label: 'Save water for family '
+    consequencePreview: 'Your crops may wither '
+    icon: 
+    outcomeHeadline: 'Your family is safe. The harvest is smaller.
+
+'
+    outcomeDetail: 'Your family is safe. The harvest is smaller.
+
+'
+    consequenceType: 0
+  realWorldImpactText: 1 in 3 Rwandan farmers faced this choice in 2023.

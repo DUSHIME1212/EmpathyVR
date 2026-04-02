@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a098cdb715eb3248a476a93aef80d94, type: 3}
+  m_Name: Scenario_FarmersMorning
+  m_EditorClassIdentifier: Assembly-CSharp::EmpathyVR.Data.SO_Scenario
+  scenarioId: farmers_morning
+  title: The Farmer's Morning
+  description: Step into the perspective of Elias, a third-generation regenerative
+    farmer...
+  thumbnailImage: {fileID: 21300000, guid: 53783862bbc5cf042b9ed48eb96c08f6, type: 3}
+  category: PERSPECTIVE
+  estimatedMinutes: 3
+  chapters:
+  - {fileID: 11400000, guid: e7bdc735c9f6e8e44a9109fddb7e40ec, type: 2}
+  - {fileID: 11400000, guid: acbb8998963ac31468b3fefe145f6dda, type: 2}
+  decisions:
+  - {fileID: 11400000, guid: c1cf5a12749ff004ea7c9c38e165ea77, type: 2}
+  sceneName: 04_Experience_FarmersMorning
+  comfortLevel: Sitting or Standing
+  isUnlocked: 1

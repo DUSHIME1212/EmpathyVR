@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f880e0f8e500e8b4cb020d10e7261ccd, type: 3}
+  m_Name: Chapter_FarmersMorning_02
+  m_EditorClassIdentifier: Assembly-CSharp::EmpathyVR.Data.SO_NarrativeChapter
+  chapterId: ch_fm_02
+  chapterTitle: The Journey Home
+  speakerName: Amara
+  narrativeText: 'You walk home with the weight of your choices...
+
+'
+  narrationAudio: {fileID: 8300000, guid: 2afa66ea8d371884dbb31368198a68d2, type: 3}
+  chapterNumber: 0
+  ambientAudioTag: ambient_farm_morning
+  triggerDecisionAfter: 0
+  nextDecision: {fileID: 0}
+  isFinalChapter: 1
