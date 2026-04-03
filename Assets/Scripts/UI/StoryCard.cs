@@ -36,7 +36,11 @@ namespace EmpathyVR.UI
             if (selectButton != null)
             {
                 selectButton.onClick.RemoveAllListeners();
-                selectButton.onClick.AddListener(() => _onSelected?.Invoke());
+                selectButton.onClick.AddListener(() => 
+                {
+                    Debug.Log($"[StoryCard] Button clicked for scenario: {scenario.title}");
+                    _onSelected?.Invoke();
+                });
             }
         }
     }

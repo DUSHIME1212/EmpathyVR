@@ -98,11 +98,15 @@ public class BriefingUI : MonoBehaviour
  
     private void Populate(SO_Scenario scenario)
     {
-        categoryTagText.text        = scenario.category;
-        scenarioTitleText.text      = scenario.title;
-        descriptionText.text        = scenario.description;
-        durationAndComfortText.text = $"Estimated duration: {scenario.estimatedMinutes} minutes. " +
-                                      $"Comfort level: {scenario.comfortLevel}.";
+        if (categoryTagText != null) categoryTagText.text = scenario.category;
+        if (scenarioTitleText != null) scenarioTitleText.text = scenario.title;
+        if (descriptionText != null) descriptionText.text = scenario.description;
+        
+        if (durationAndComfortText != null)
+        {
+            durationAndComfortText.text = $"Estimated duration: {scenario.estimatedMinutes} minutes. " +
+                                          $"Comfort level: {scenario.comfortLevel}.";
+        }
  
         if (chapterTrackerText != null && scenario.chapters != null)
             chapterTrackerText.text = $"Chapter 1 of {scenario.chapters.Count}";
@@ -125,9 +129,10 @@ public class BriefingUI : MonoBehaviour
     private void SwitchTab(int index)
     {
         _activeTab = index;
-        panelBriefing?.SetActive(index == 0);
-        panelExperience?.SetActive(index == 1);
-        panelReflection?.SetActive(index == 2);
+        
+        if (panelBriefing != null) panelBriefing.SetActive(index == 0);
+        if (panelExperience != null) panelExperience.SetActive(index == 1);
+        if (panelReflection != null) panelReflection.SetActive(index == 2);
  
         // Update progress dots
         for (int i = 0; i < progressDots.Count; i++)
@@ -143,12 +148,15 @@ public class BriefingUI : MonoBehaviour
     private void OnBeginClicked()
     {
         Debug.Log("[BriefingUI] OnBeginClicked: Button pressed!");
-        if (SceneLoader.Instance == null)
+        if (SceneLoader.Instance != null)
         {
-            Debug.LogError("[BriefingUI] OnBeginClicked: SceneLoader.Instance is NULL!");
-            return;
+            SceneLoader.Instance.LoadScene("03_StorySelection");
         }
-        SceneLoader.Instance.LoadScene("03_StorySelection");
+        else
+        {
+            Debug.LogWarning("[BriefingUI] SceneLoader.Instance is null! Falling back to SceneManager.LoadScene.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("03_StorySelection");
+        }
     }
  
     private void FadeIn()

@@ -1,0 +1,2 @@
+C:\Users\don360\Desktop\csharp\EmpathyVR V1.0.1\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\don360\Desktop\csharp\EmpathyVR V1.0.1\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

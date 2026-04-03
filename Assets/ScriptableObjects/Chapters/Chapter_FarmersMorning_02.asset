@@ -19,8 +19,9 @@ MonoBehaviour:
 
 '
   narrationAudio: {fileID: 8300000, guid: 2afa66ea8d371884dbb31368198a68d2, type: 3}
-  chapterNumber: 0
+  chapterNumber: 2
   ambientAudioTag: ambient_farm_morning
+  chapterSkybox: {fileID: 2100000, guid: e2b08eb50535fbf4faeeb8f70bfcebd9, type: 2}
   triggerDecisionAfter: 0
   nextDecision: {fileID: 0}
   isFinalChapter: 1

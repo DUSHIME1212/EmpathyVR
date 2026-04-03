@@ -1,0 +1,10 @@
+# ninja log v5
+68	7757	7969411807649514	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	1d26303aa1908606
+109	7802	7969411808006721	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7528565a6661b6f9
+144	7805	7969411808349267	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1f80531c25c573e5
+0	7815	7969411808604396	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	6e900cee1929f860
+26	7951	7969411810056057	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	4d810a00639eb2c8
+156	8395	7969411814536921	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	48ff455acd31df7d
+128	8545	7969411815704431	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	41bac43b299dc1c2
+14	8655	7969411816866261	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f9eaf63799d0105
+8656	8967	7969411820168834	C:/Users/don360/Desktop/csharp/EmpathyVR V1.0.1/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/214x1qf4/obj/arm64-v8a/libgame.so	67456eee983c39d1

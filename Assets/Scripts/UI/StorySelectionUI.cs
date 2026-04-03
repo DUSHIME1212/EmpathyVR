@@ -61,8 +61,22 @@ namespace EmpathyVR.UI
 
         private void OnScenarioSelected(SO_Scenario scenario)
         {
-            GameManager.Instance.LoadScenario(scenario);
-            SceneLoader.Instance.LoadScene(scenario.sceneName);
+            Debug.Log($"[StorySelectionUI] OnScenarioSelected: {scenario.title}");
+
+            if (GameManager.Instance != null)
+                GameManager.Instance.LoadScenario(scenario);
+            else
+                Debug.LogWarning("[StorySelectionUI] GameManager.Instance is null! Scenario data not loaded to GameManager.");
+
+            if (SceneLoader.Instance != null)
+            {
+                SceneLoader.Instance.LoadScene(scenario.sceneName);
+            }
+            else
+            {
+                Debug.LogWarning($"[StorySelectionUI] SceneLoader.Instance is null! Falling back to SceneManager.LoadScene with scene: {scenario.sceneName}");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(scenario.sceneName);
+            }
         }
     }
 }

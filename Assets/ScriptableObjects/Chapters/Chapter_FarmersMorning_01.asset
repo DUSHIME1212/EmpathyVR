@@ -17,8 +17,9 @@ MonoBehaviour:
   speakerName: Amara
   narrativeText: The sun rises over the valley. You have been awake since 4am...
   narrationAudio: {fileID: 8300000, guid: 2b0a577f1953bb840b00fc1c2565497f, type: 3}
-  chapterNumber: 0
+  chapterNumber: 1
   ambientAudioTag: ambient_farm_morning
+  chapterSkybox: {fileID: 2100000, guid: baf8db5c7dad28741b7984f67f3161ea, type: 2}
   triggerDecisionAfter: 1
-  nextDecision: {fileID: 11400000, guid: 4a651c9be69111a41a3926447dd9a420, type: 2}
+  nextDecision: {fileID: 11400000, guid: c1cf5a12749ff004ea7c9c38e165ea77, type: 2}
   isFinalChapter: 0

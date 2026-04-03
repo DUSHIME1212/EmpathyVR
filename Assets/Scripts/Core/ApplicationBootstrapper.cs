@@ -55,7 +55,8 @@ public class ApplicationBootstrapper : MonoBehaviour
  
     private void SpawnIfMissing<T>(GameObject prefab, string label) where T : MonoBehaviour
     {
-        if (FindFirstObjectByType<T>() != null) return; // Already exists (e.g. from previous load)
+        // Use FindObjectsInactive.Include to catch managers that might be disabled (e.g. in a loading state)
+        if (Object.FindAnyObjectByType<T>(FindObjectsInactive.Include) != null) return; 
  
         if (prefab == null)
         {

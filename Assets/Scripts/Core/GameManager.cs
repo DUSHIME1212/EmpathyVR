@@ -57,17 +57,18 @@ namespace EmpathyVR.Core
 
         private void Start()
         {
-            // Validate only the persistent (DDOL) references that must be set in Inspector
+            // If not assigned in Inspector, try to find the singleton instance
+            if (audioManager == null) audioManager = AudioManager.Instance;
+
+            // Validate only the persistent (DDOL) references
             if (audioManager == null)
-                Debug.LogError("[GameManager] 'AudioManager' is not assigned in Inspector!", this);
+                Debug.LogError("[GameManager] 'AudioManager' is not assigned and could not be found! Please ensure an AudioManager is in the scene or prefabs.", this);
+            
             if (playerChoiceRecord == null)
                 Debug.LogError("[GameManager] 'PlayerChoiceRecord' is not assigned in Inspector!", this);
 
             if (playerChoiceRecord != null)
                 playerChoiceRecord.Reset();
-
-            // currentScenario is only loaded by the gameplay scene — not at boot
-            // The GameScene will call LoadScenario() directly.
         }
 
         // ── Register / Unregister (called by scene-local MonoBehaviours) ────────
@@ -89,6 +90,13 @@ namespace EmpathyVR.Core
             currentScenario = scenario;
             _currentChapterIndex = 0;
             OnScenarioLoaded?.Invoke(scenario);
+            // We no longer call BeginChapter(0) here because the scene might not be ready.
+            // SceneInitializer or a specific 'Start' button will call StartExperience().
+        }
+
+        public void StartExperience()
+        {
+            Debug.Log($"[GameManager] Starting Experience: {currentScenario?.title}");
             BeginChapter(0);
         }
 

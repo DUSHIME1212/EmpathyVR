@@ -18,6 +18,7 @@ namespace EmpathyVR.Data
         [Header("Sequence")]
         public int chapterNumber;
         public string ambientAudioTag;
+        public Material chapterSkybox;       // New: Allows for 360 VR photos per chapter
         public bool triggerDecisionAfter;
         public SO_DecisionData nextDecision;
         public bool isFinalChapter;

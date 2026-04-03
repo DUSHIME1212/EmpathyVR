@@ -35,6 +35,16 @@ public class MainMenuController : MonoBehaviour
         cg.DOFade(1f, 0.5f);
 
         startButton.onClick.AddListener(() =>
-            SceneLoader.Instance.LoadScene("02_Briefing"));
+        {
+            if (SceneLoader.Instance != null)
+            {
+                SceneLoader.Instance.LoadScene("02_Briefing");
+            }
+            else
+            {
+                Debug.LogWarning("[MainMenuController] SceneLoader.Instance is null! Falling back to SceneManager.LoadScene.");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("02_Briefing");
+            }
+        });
     }
 }

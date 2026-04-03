@@ -50,7 +50,11 @@ MonoBehaviour:
   bgmSource: {fileID: 0}
   ambientSource: {fileID: 0}
   sfxSource: {fileID: 0}
-  ambientClips: []
+  ambientClips:
+  - tag: ambient_farm_morning
+    clip: {fileID: 8300000, guid: 5c787fdaf1f99bc418b7d6e56f2b49c1, type: 3}
+  - tag: ambient_farm
+    clip: {fileID: 8300000, guid: 92cfa62ecfa060546bbbcf911ef6825d, type: 3}
   sfxClips: []
 --- !u!1 &4866311791033924306
 GameObject:

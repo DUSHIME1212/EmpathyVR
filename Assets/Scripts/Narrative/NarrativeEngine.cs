@@ -15,12 +15,21 @@ namespace EmpathyVR.Narrative
     {
         [SerializeField] private HUDController hudController;
 
+        public static NarrativeEngine Instance { get; private set; }
         private AudioSource _audioSource;
         private SO_NarrativeChapter _currentChapter;
         private Coroutine _playbackCoroutine;
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Debug.LogError($"<color=red>[NarrativeEngine]</color> CRITICAL: Duplicate NarrativeEngine found on {gameObject.name}. " +
+                               "Please delete the duplicate! The current active one is on: " + Instance.gameObject.name);
+                return;
+            }
+            Instance = this;
+
             _audioSource = GetComponent<AudioSource>();
             _audioSource.spatialBlend = 0f; // 2D narration — always clear
         }
@@ -33,6 +42,7 @@ namespace EmpathyVR.Narrative
 
         private void OnDestroy()
         {
+            if (Instance == this) Instance = null;
             if (GameManager.Instance != null)
                 GameManager.Instance.UnregisterNarrativeEngine(this);
         }
@@ -48,14 +58,22 @@ namespace EmpathyVR.Narrative
         {
             if (_playbackCoroutine != null) StopCoroutine(_playbackCoroutine);
             _audioSource.Stop();
-            hudController.ClearSubtitle();
+
+            if (hudController != null)
+                hudController.ClearSubtitle();
+            else
+                Debug.LogWarning("[NarrativeEngine] HUDController is unassigned in Inspector! Subtitles will not clear.");
+
             GameManager.Instance.OnChapterNarrationComplete(_currentChapter);
         }
 
         private IEnumerator PlayNarrationRoutine(SO_NarrativeChapter chapter)
         {
             // Show speaker name and text
-            hudController.ShowSubtitle(chapter.speakerName, chapter.narrativeText);
+            if (hudController != null)
+                hudController.ShowSubtitle(chapter.speakerName, chapter.narrativeText);
+            else
+                Debug.LogError("[NarrativeEngine] HUDController is MISSING! Skipping subtitles display.");
 
             // Play audio if available
             if (chapter.narrationAudio != null)
@@ -71,7 +89,8 @@ namespace EmpathyVR.Narrative
                 yield return new WaitForSeconds(readTime);
             }
 
-            hudController.ClearSubtitle();
+            if (hudController != null)
+                hudController.ClearSubtitle();
 
             // Slight pause before triggering next step
             yield return new WaitForSeconds(0.8f);
