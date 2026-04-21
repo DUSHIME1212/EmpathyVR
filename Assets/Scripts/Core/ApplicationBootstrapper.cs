@@ -9,8 +9,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.XR.CoreUtils;
 using EmpathyVR.Core;
 using EmpathyVR.Audio;
+
  
 public class ApplicationBootstrapper : MonoBehaviour
 {
@@ -18,16 +20,32 @@ public class ApplicationBootstrapper : MonoBehaviour
     [SerializeField] private GameObject gameManagerPrefab;
     [SerializeField] private GameObject audioManagerPrefab;
     [SerializeField] private GameObject sceneLoaderPrefab;
- 
+
+    [Header("XR Player")]
+    [Tooltip("Drag your XR Origin (VR) prefab here. It will be kept alive across ALL scenes.")]
+    [SerializeField] private GameObject xrRigPrefab;
+
     [Header("Boot Settings")]
     [SerializeField] private string firstSceneName = "01_MainMenu";
-    [SerializeField] private float minimumSplashTime = 1.5f;  // Seconds to show logo
- 
+    [SerializeField] private float minimumSplashTime = 1.5f;
     private void Awake()
     {
         SpawnIfMissing<GameManager>(gameManagerPrefab, "GameManager");
         SpawnIfMissing<AudioManager>(audioManagerPrefab, "AudioManager");
         SpawnIfMissing<SceneLoader>(sceneLoaderPrefab, "SceneLoader");
+
+        // Spawn XR Rig once — persists across all scenes so tracking never resets
+        if (xrRigPrefab != null && FindAnyObjectByType<XROrigin>(FindObjectsInactive.Include) == null)
+        {
+            var rig = Instantiate(xrRigPrefab);
+            rig.name = "[XR Origin (VR)]";
+            DontDestroyOnLoad(rig);
+            Debug.Log("[Bootstrapper] Spawned persistent XR Rig.");
+        }
+        else if (xrRigPrefab == null)
+        {
+            Debug.LogWarning("[Bootstrapper] XR Rig prefab not assigned — add it to the Bootstrapper Inspector.");
+        }
     }
  
     private void Start()
