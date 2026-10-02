@@ -262,8 +262,6 @@ The video demonstrates:
 ## Author
 
 **DUSHIME** — AR/VR Development  
-*Vertical Slice Submission — [UNITY II VR DEVELOPMENT]*  
-*[Institution Name] — [2026]*
 
 ---
 
